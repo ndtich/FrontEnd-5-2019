@@ -1,0 +1,35 @@
+.wrapper {
+    background-color: gray;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+    width: 130px;
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+.box img {
+    height: 130px;
+    width: 100%;
+}
+
+.boxTop h4 {
+    margin: 0px;
+}
+
+.boxBottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottomStar i {
+    font-size: 10px;
+}
