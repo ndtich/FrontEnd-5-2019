@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        .screen {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        .play {
+            position: absolute;
+            top: 35%;
+            left: 35%;
+            width: 30%;
+            height: 30%;
+        }
+        .control {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+        }
+        .tv {
+            position: relative;
+            width: 300px;
+            height: 200px;
+        }
+
+        .display-none {
+            display: none;
+        }
+
+        
+    </style>
+    <script>
+        $(document).ready(function(){
+            var status = false;
+            var interval;
+            $(".tv").click(function(){
+                console.log(status);
+                if (status) {
+                    status = false;
+                    clearInterval(interval);
+                    $(".screen").hide();
+                    $("#screen0").show();
+                    $("#slide1").show();
+                    $("#play").show();
+                    $(".control").hide();
+                }
+                else {
+                    status = true;
+                    var slide = 1;
+                    $(".slide").hide();
+                    $(".play").hide();
+                    $(".control").show();
+                    if (slide == 3) {
+                        slide = 1;
+                    } else {
+                        slide ++;
+                    }
+                    $("#slide" + slide).show();
+                    interval = setInterval(function(){
+                        $(".slide").hide();
+                        $(".play").hide();
+                        if (slide == 3) {
+                            slide = 1;
+                        } else {
+                            slide ++;
+                        }
+                        $("#slide" + slide).show();
+                    }, 2000);
+                    
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="tv">
+        <img class="screen" id="screen0" src="screen.png" alt="screen"/>
+        <img class="screen slide" id="slide1" src="slide1.png" alt="screen wait"/>
+        <img class="screen slide display-none" id="slide2" src="slide2.png" alt="screen2"/>
+        <img class="screen slide display-none" id="slide3" src="slide3.png" alt="screen3"/>
+        <img class="play " id="play" src="play.png" alt="play"/>
+        <img class="control display-none" id="control" src="controls.png" alt="control"/>
+    </div>
+</body>
+</html>
