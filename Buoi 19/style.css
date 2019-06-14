@@ -1,0 +1,26 @@
+body {
+    background-color: #F4F4F4;
+}
+
+p{
+    font-size: 10px;
+}
+
+.price {
+    opacity: 0.8;
+    text-decoration: line-through;
+}
+.qty {
+    width: 30px;
+    text-align: center;
+}
+
+.background-white {
+    background-color: white;
+    padding: 10px;
+}
+
+.total {
+    color: red;
+    font-size: 20px;
+}
