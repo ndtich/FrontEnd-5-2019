@@ -35,7 +35,8 @@
     <link rel="stylesheet" href="style.css" />
     <script>
         $(document).ready(function(){
-            var cart = [
+            if (!localStorage.getItem("cart")) {
+              localStorage.setItem("cart", JSON.stringify([
                 {
                     id: '1',
                     name: 'Bách khoa lịch sử thế giới',
@@ -54,9 +55,14 @@
                     author: 'Usbome',
                     qty: 2
                 }
-            ];
+            ]));
+            }
+            var cart = JSON.parse(localStorage.getItem("cart"));
+            
+
             for(var i = 0; i< cart.length; i++) {
-                $('.cart').append(`<div class="row">
+                $('.cart').append(`
+          <div class="row">
             <div class="col-sm-2">
               <img src="avatar1.png" class="img-thumbnail" alt="avatar" />
             </div>
@@ -66,7 +72,7 @@
               <p>
                 <span>Sách không hỗ trợ Bookcare</span><br />
                 Cung cấp bởi <a href="#"></a>
-                <button class="btn btn-link">Xoá</button>
+                <button class="btn btn-link delete">Xoá</button>
                 <button class="btn btn-link">Để dành mua sau</button>
               </p>
 
@@ -105,61 +111,51 @@
 
             $('.sub').click(function(){
                 var qty = $(this).parent().parent().find('.qty').val();
+                if (qty <= 1) {
+                  var id = $(this).parent().parent().find('.id').val();
+                  for(var i = 0; i< cart.length; i++) {
+                      if (cart[i].id == id) {
+                          cart.splice(i, 1);
+                          break;
+                      }
+                  }
+                  $(this).parent().parent().parent().parent().remove();
+                  localStorage.setItem("cart", JSON.stringify(cart));
+                } else {
+                  qty--;
+                  var id = $(this).parent().parent().find('.id').val();
+                
+                  for(var i = 0; i < cart.length; i++) {
+                      if (cart[i].id == id) {
+                          cart[i].qty = qty;
+                      }
+                  }
+                  $(this).parent().parent().find('.qty').val(qty);
+                  localStorage.setItem("cart", JSON.stringify(cart));
+                }
+            });
+            $('.add').click(function(){
+                var qty = $(this).parent().parent().find('.qty').val();
+                qty++; //qty = qty + 1
                 var id = $(this).parent().parent().find('.id').val();
                 for(var i = 0; i< cart.length; i++) {
                     if (cart[i].id == id) {
-                        cart.splice(i, 1);
-                        break;
+                        cart[i].qty = qty;
                     }
                 }
-                $('.cart').empty();
-                for(var i = 0; i< cart.length; i++) {
-                $('.cart').append(`<div class="row">
-            <div class="col-sm-2">
-              <img src="avatar1.png" class="img-thumbnail" alt="avatar" />
-            </div>
-            <div class="col-sm-6">
-              <h5>${cart[i].name}</h5>
-              - Tác giả: <a href="#">${cart[i].author}</a> <br />
-              <p>
-                <span>Sách không hỗ trợ Bookcare</span><br />
-                Cung cấp bởi <a href="#"></a>
-                <button class="btn btn-link">Xoá</button>
-                <button class="btn btn-link">Để dành mua sau</button>
-              </p>
-
-              <p></p>
-            </div>
-
-            <div class="col-sm-2">
-              <h4>${cart[i].price}đ</h4>
-              <p><span class="price">${cart[i].priceOld}đ</span> | <b>-26%</b></p>
-            </div>
-            <div class="col-sm-2">
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary sub" type="button">
-                    -
-                  </button>
-                </div>
-                <input type="hidden" class="id" value="${cart[i].id}"/>
-                <input
-                  type="text"
-                  class="qty"
-                  placeholder=""
-                  aria-label=""
-                  aria-describedby="basic-addon1"
-                  value="${cart[i].qty}"
-                />
-                <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary add" type="button">
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>`)
-            }
+                $(this).parent().parent().find('.qty').val(qty);
+                localStorage.setItem("cart", JSON.stringify(cart));
+            });
+            $('.delete').click(function(){
+              var id = $(this).parent().parent().find('.id').val();
+              for(var i = 0; i< cart.length; i++) {
+                  if (cart[i].id == id) {
+                      cart.splice(i, 1);
+                      break;
+                  }
+              }
+              $(this).parent().parent().parent().remove();
+              localStorage.setItem("cart", JSON.stringify(cart));
             });
         });
     </script>
