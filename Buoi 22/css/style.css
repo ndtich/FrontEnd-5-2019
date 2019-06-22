@@ -1,0 +1,127 @@
+.color-orange {
+    color: orange;
+}
+
+.color-base {
+    color: #79C334;
+}
+
+.navItem {
+    list-style-type: none;
+    border-right: 1px rgb(163, 132, 132) solid;
+    color: white;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.active {
+    background-color: rgb(5, 82, 145);
+}
+
+.navItem:first-child {
+    border-radius: 12px 0 0 12px;
+}
+
+.navItem:hover {
+    background-color: orange;
+}
+
+.clear {
+    clear: both;
+}
+
+.topNav {
+    background-color: #2B83CD;
+    border-radius: 12px;
+    height: 50px;
+}
+
+.list-item {
+    justify-content: space-between;
+    padding-left: 0;
+    align-items: center;
+    height: 100%;
+    padding-right: 50px;
+}
+
+.form-header {
+    background-color: #2B83CD;
+    color: white;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid gray;
+}
+
+.form-search {
+    padding: 0px !important;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.form-content {
+    border: 1px solid gray;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.btn-find {
+    background-color: #79C334;
+    color: white;
+    height: 35px;
+    border-radius: 5px;
+    box-shadow: rgb(76, 158, 0) 4px 4px;
+}
+
+.btn-view {
+    background-color: #79C334;
+    color: white;
+    height: 25px;
+    border-radius: 5px;
+    box-shadow: rgb(76, 158, 0) 4px 4px;
+    font-size: 13px;
+    width: 100%;
+}
+
+.banner2 {
+    width: 100%;
+}
+
+.font-10 {
+    font-size: 10px;
+}
+
+.color-blue {
+    color: blue;
+}
+
+body {
+    padding-left: 100px;
+    padding-right: 100px;
+    background-image: url('./../img/Wallpaper.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-color: #EBE7DB;
+    box-sizing: border-box;
+    padding-bottom: 200px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper {
+    background-color: white;
+}
