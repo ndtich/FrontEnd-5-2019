@@ -1,0 +1,54 @@
+header {
+    height: 40px;
+    background-color: black;
+    color: white;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.itemHeader {
+    list-style-type: none;
+    float: left;
+    line-height: 40px;
+    padding: 0 20px;
+    border-left: 1px solid gray;
+    
+}
+ul {
+    padding: 0;
+}
+.itemHeader:last-child {
+    border-right: 1px solid gray;
+}
+
+body {
+    background-color: rgb(74, 153, 153);
+}
+
+.content {
+    background-color: white;
+    height: 500px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.post {
+    position: relative;
+}
+
+.calendar {
+    position: absolute;
+    left: -50px;
+    top: 0px;
+    width:45px;
+    background-color: white;
+    border: solid 1px black;
+}
+
+.month {
+    border-bottom: 1px dotted black;
+}
+
+.numComment {
+    position: absolute;
+}

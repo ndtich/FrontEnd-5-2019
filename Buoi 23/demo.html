@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.4.1.min.js"></script>
+
+    <style>
+        .garden {
+            margin-top: 50px;
+        }
+        .demo {
+            width: 50%;
+        }
+        .demo1 {
+            width: 30%;
+        }
+        .imgdemo {
+            transition: width 0.5s;
+        }
+        body {
+            height: 1000px;
+        }
+        .toTop {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 30px;
+            background-color: red;
+            color: blue;
+            display: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                var position = $(this).scrollTop();
+                if (position > 50) {
+                    $('img').removeClass('demo');
+                    $('img').addClass('demo1');
+                    $('.toTop').css('display', 'block');
+                } else {
+                    $('img').addClass('demo');
+                    $('img').removeClass('demo1');
+                    $('.toTop').css('display', 'none');
+                }
+
+            });
+            $('.toTop').click(function(){
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="garden">
+        <div id="water">
+            <img src="img/item1.png" alt="item" class="demo imgdemo">
+        </div>
+    </div>
+    <button class="toTop">Top</button>
+</body>
+</html>
